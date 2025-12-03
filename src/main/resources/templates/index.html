@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Capacitaciones - Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            Sistema de Capacitaciones
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarMenu" aria-controls="navbarMenu"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarMenu">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item me-2">
+                    <a class="nav-link" th:href="@{/admin/cursos}">Panel Admin</a>
+                </li>
+                <li class="nav-item me-2">
+                    <a class="nav-link" th:href="@{/empleado/cursos}">Panel Empleado</a>
+                </li>
+                <li class="nav-item">
+                    <form th:action="@{/logout}" method="post">
+                        <button type="submit" class="btn btn-sm btn-outline-light">
+                            Cerrar sesión
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="hero-card bg-white p-4 p-md-5 mb-4">
+                <div class="row align-items-center g-4">
+                    <div class="col-md-7">
+                        <span class="hero-badge badge rounded-pill bg-primary-subtle text-primary mb-3">
+                            Módulo 6 · Evaluación de Portafolio
+                        </span>
+                        <h1 class="h3 h-md2 fw-bold mb-3">
+                            Sistema de Capacitaciones Internas
+                        </h1>
+                        <p class="text-muted mb-4">
+                            Este sistema permite gestionar cursos de capacitación para los colaboradores de la empresa,
+                            administrando instructores, cupos e inscripciones. Utiliza Spring Boot, Spring Security,
+                            Spring Data JPA, Thymeleaf y MySQL.
+                        </p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a th:href="@{/admin/cursos}" class="btn btn-primary">
+                                Ir al panel de administración
+                            </a>
+                            <a th:href="@{/empleado/cursos}" class="btn btn-outline-primary">
+                                Ver cursos como empleado
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="border rounded-4 p-3 bg-light">
+                            <h2 class="h6 fw-semibold mb-3">Resumen de funcionalidades</h2>
+                            <ul class="list-unstyled small mb-0">
+                                <li class="mb-1">• Login con roles <strong>ADMIN</strong> y <strong>EMPLEADO</strong>.</li>
+                                <li class="mb-1">• Panel ADMIN para gestionar cursos.</li>
+                                <li class="mb-1">• Panel EMPLEADO para ver cursos e inscribirse.</li>
+                                <li class="mb-1">• API REST para listar cursos e inscripciones.</li>
+                                <li class="mb-1">• Persistencia con Spring Data JPA + MySQL.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="card role-card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="role-icon mb-3">
+                                <span class="text-primary">
+                                    <i class="bi bi-shield-lock"></i>
+                                </span>
+                            </div>
+                            <h2 class="h5 fw-semibold mb-2">Rol ADMIN</h2>
+                            <p class="text-muted small mb-3">
+                                Usuario responsable de la creación y administración de cursos, asignación de instructores
+                                y revisión de la oferta de capacitaciones internas.
+                            </p>
+                            <ul class="small text-muted mb-3">
+                                <li>Gestionar cursos y cupos.</li>
+                                <li>Asignar instructores.</li>
+                                <li>Revisar cursos activos/inactivos.</li>
+                            </ul>
+                            <span class="badge bg-primary-subtle text-primary small">
+                                Ruta: /admin/cursos
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card role-card border-0 shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="role-icon mb-3">
+                                <span class="text-success">
+                                    <i class="bi bi-person-check"></i>
+                                </span>
+                            </div>
+                            <h2 class="h5 fw-semibold mb-2">Rol EMPLEADO</h2>
+                            <p class="text-muted small mb-3">
+                                Colaborador que puede revisar los cursos publicados, conocer los detalles de cada
+                                capacitación e inscribirse en las que estén disponibles.
+                            </p>
+                            <ul class="small text-muted mb-3">
+                                <li>Consultar cursos disponibles.</li>
+                                <li>Revisar fechas y cupos.</li>
+                                <li>Realizar inscripciones.</li>
+                            </ul>
+                            <span class="badge bg-success-subtle text-success small">
+                                Ruta: /empleado/cursos
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer class="footer-custom mt-4 py-3">
+    <div class="container text-center small">
+        Sistema de Capacitaciones · Proyecto M6 · Spring Boot + MySQL
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

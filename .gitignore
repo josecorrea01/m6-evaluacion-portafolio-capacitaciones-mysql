@@ -1,2 +1,69 @@
-# Project exclude paths
-/target/
+############################
+# Maven / Build
+############################
+target/
+!.mvn/wrapper/maven-wrapper.jar
+
+# Archivos temporales de Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+############################
+# IntelliJ IDEA
+############################
+.idea/
+*.iml
+*.iws
+out/
+
+############################
+# Otros IDEs (por si se abre en Eclipse/STS)
+############################
+.project
+.classpath
+.settings/
+.bin/
+
+############################
+# Logs y archivos temporales
+############################
+*.log
+logs/
+hs_err_pid*
+replay_pid*
+
+############################
+# Sistema operativo
+############################
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+############################
+# Archivos temporales de editor
+############################
+*~
+*.swp
+*.swo
+
+############################
+# Node / Frontend (si llegase a usarlo en este repo)
+############################
+node_modules/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+############################
+# Carpeta de exportaciones/ZIP locales (si las usas)
+############################
+/export/
+/zips/

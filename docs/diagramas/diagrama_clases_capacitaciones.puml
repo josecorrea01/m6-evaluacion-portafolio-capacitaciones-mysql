@@ -1,0 +1,46 @@
+@startuml
+title Diagrama de clases - Sistema de Capacitaciones
+
+class Instructor {
+  - Long id
+  - String nombre
+  - String email
+  - String especialidad
+}
+
+class Curso {
+  - Long id
+  - String nombre
+  - String descripcion
+  - LocalDate fechaInicio
+  - LocalDate fechaFin
+  - Integer cupoMaximo
+  - boolean activo
+}
+
+class Empleado {
+  - Long id
+  - String nombre
+  - String email
+  - String password
+  - Rol rol
+}
+
+enum Rol {
+  ADMIN
+  EMPLEADO
+}
+
+class Inscripcion {
+  - Long id
+  - LocalDateTime fechaInscripcion
+}
+
+Instructor "1" --> "0..*" Curso : imparte
+Curso "1" --> "0..*" Inscripcion : tiene
+Empleado "1" --> "0..*" Inscripcion : realiza
+
+Inscripcion "1" --> "1" Curso
+Inscripcion "1" --> "1" Empleado
+
+@enduml

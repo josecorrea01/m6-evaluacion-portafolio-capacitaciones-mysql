@@ -1,0 +1,31 @@
+@startuml
+title Flujo de navegación - Sistema de Capacitaciones
+
+[*] --> Login : abrir aplicación ( / )
+
+state "Login\n(/login)" as Login
+state "Home ADMIN\n(/admin/cursos)" as HomeAdmin
+state "Home EMPLEADO\n(/empleado/cursos)" as HomeEmpleado
+state "Lista cursos ADMIN\n(/admin/cursos)" as ListaAdmin
+state "Formulario curso\n(/admin/cursos/nuevo,\n/admin/cursos/{id}/editar)" as FormCurso
+state "Lista cursos EMPLEADO\n(/empleado/cursos)" as ListaEmpleado
+state "Confirmación inscripción\n(mensaje de éxito)" as ConfInscripcion
+state "Logout\n(/logout)" as Logout
+
+Login --> HomeAdmin : credenciales válidas\nrol = ADMIN
+Login --> HomeEmpleado : credenciales válidas\nrol = EMPLEADO
+Login --> Login : error de login\n(usuario/clave inválidos)
+
+HomeAdmin --> ListaAdmin : ver cursos
+ListaAdmin --> FormCurso : nuevo curso / editar curso
+FormCurso --> ListaAdmin : guardar / cancelar
+ListaAdmin --> Logout : cerrar sesión
+
+HomeEmpleado --> ListaEmpleado : ver cursos disponibles
+ListaEmpleado --> ConfInscripcion : inscribirse en curso
+ConfInscripcion --> ListaEmpleado : volver a cursos
+ListaEmpleado --> Logout : cerrar sesión
+
+Logout --> Login : volver a pantalla de login
+
+@enduml
